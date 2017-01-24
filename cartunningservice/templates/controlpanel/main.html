@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if tasks %}
+{{ pagination.info }}
+{{ pagination.links }}
+<div class="table-responsive">
+    <table class="table-striped table table-hover">
+        <thead>
+        <tr>
+            <th> <input type="checkbox" id="selectAll" /></th>
+            <th>#</th>
+            <th>{{_('Created')}}</th>
+            <th>{{_('Vehicle')}}</th>
+            <th>{{_('Status')}}</th>
+            <th>{{_('Download')}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+        <tr onclick="window.location.href = 'url';" style="cursor: pointer">
+            <td><input type="checkbox" id="{{ loop.index + (page - 1) * per_page }}" /></td>
+            <td>{{ loop.index + (page - 1) * per_page }}</td>
+            <td>{{ task.created }}</td>
+            <td>{{ task.vehicle.name }} / {{ task.brand.name }} / {{ task.model.name }} / {{ task.engine.name }} / {{ task.ecu.name }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.allowDownload}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{{ pagination.links }}
+{% endif %}
+
+{% if active_url %}
+$('#{{ active_url }}').addClass('active');
+{% else %}
+$('#users-url').addClass('active');
+{% endif %}
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container-fluid">
+    <form id="createTaskForm" class="form-vertical" method="POST" action="" role="form">
+        <div class="row">
+            <h2>Process New ECU file</h2>
+            <br/>
+        </div>
+        <div class="row">
+            <div class="col-md-4 column">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="form-group">
+                    {{form.type.label(class_="requiredField")}}<span class="asteriskField">*</span>
+                    {{form.type(id="type_select", class_="selectpicker form-control")}}
+                </div>
+                <div class="form-group">
+                    {{form.brand.label}}
+                    {{form.brand(id="brand_select", class_="selectpicker form-control")}}
+                </div>
+                <div class="form-group">
+                    {{form.model.label}}
+                    {{form.model(id="model_select", class_="selectpicker form-control")}}
+                </div>
+                <div class="form-group">
+                    {{form.engine.label}}
+                    {{form.engine(id="engine_select", class_="selectpicker form-control")}}
+                </div>
+                <div class="form-group">
+                    {{form.ecu.label}}
+                    {{form.ecu(id="ecu_select", class_="selectpicker form-control")}}
+                </div>
+            </div>
+            <div class="col-md-1 column">
+            </div>
+            <div class="col-md-7 column">
+                <div class="column">
+                    <div class="row">
+                        <div class="col-md-12 column">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">You must use only original ECU file!</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <ul>
+                                        <li>The service works only with <strong>original ECU files</strong> or files with chip-tunning.
+                                        </li>
+                                        <li>Service does not work with files in archives <strong>(zip, rar and etc)</strong>. The files should be
+                                        unpacked.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 column">
+                                <div class="form-group">
+                                    <!-- The fileinput-button span is used to style the file input field as button -->
+                                    {{form.file.label}}
+                                    <br>
+                                    <span class="btn btn-success fileinput-button">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        <span>Select ECU file...</span>
+                                        <!-- The file input field used as target for the file upload widget -->
+                                        {{form.file(id="fileupload", class_="file form-control")}}
+                                        <!--<input id="fileupload" type="file" name="files[]" >-->
+                                    </span>
+                                    <br>
+                                    <br>
+                                    <!-- The global progress bar -->
+                                    <div id="progress" class="progress">
+                                        <div class="progress-bar progress-bar-success"></div>
+                                    </div>
+                                    <!-- The container for the uploaded files -->
+                                    <div id="files" class="files"></div>
+                                    <br>
+                                    <!--<fieldset id="progress" style="display: none">-->
+                                    <!--<legend>File Progress</legend>-->
+
+                                    <!--<div class="progress-trough">-->
+                                    <!--<div id="progress-bar" role="progressbar" class="progress-bar">0%</div>-->
+                                    <!--</div>-->
+                                    <!--</fieldset>-->
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">{{ _('Start Processing') }}
+                                    </button>
+                                    <a href="{{ url_for('controlpanel.main') }}" class="btn btn-default">{{
+                                        _('Cancel') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+

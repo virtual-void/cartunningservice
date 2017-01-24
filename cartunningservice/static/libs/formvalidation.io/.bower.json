@@ -1,0 +1,29 @@
+{
+  "name": "formvalidation.io",
+  "homepage": "https://github.com/cyclone/formvalidation.io",
+  "authors": [
+    "Hung Nguyen<hunguyenv@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "0.0.2",
+  "_release": "0.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.2",
+    "commit": "5a14eb3205b57e8e4b3c22ebc37374b4d3c9ff21"
+  },
+  "_source": "https://github.com/cyclone/formvalidation.io.git",
+  "_target": "^0.0.2",
+  "_originalSource": "formvalidation.io",
+  "_direct": true
+}
